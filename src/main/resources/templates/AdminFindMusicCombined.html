@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>管理员之乐谱全展示</title>
     <link rel="stylesheet" th:href="@{/css/Type1.css}">
+    <link rel="icon" href="https://www.searchingwu.space/img/favicon.ico"/>
 </head>
 <body style="background-color: #FFF5EE">
 
@@ -22,7 +23,7 @@
                     </b>
                 </li>
                 <li class="add">
-                    <a href="http://localhost:8080/ABC/Welcome.html">&nbsp|&nbsp退出登陆</a>
+                    <a href="https://www.searchingwu.space/index.html">&nbsp|&nbsp退出登陆</a>
                 </li>
             </ul>
         </div>
@@ -33,7 +34,7 @@
     <input class="deleteBtn" type="submit" value="删除选中的所有信息" style="border-radius:20px" onclick="del()" id="deleteAll">
 </div>
 <div id="CombinedQuery" class="QueryWindow">
-    <form action="http://localhost:8080/ABC/admin/CombinedFindMusic" method="post">
+    <form action="https://www.searchingwu.space/admin/CombinedFindMusic" method="post">
         <input type="submit" class="btn" value="组合" style="width: 80px;float: right;">
         <input type="text" name="music_name" placeholder="请输入乐谱名称，可模糊" class="input" style="float: right;">
         <input type="text" name="beat" placeholder="请输入节拍，如'4/4'" class="input" style="float: right;">
@@ -60,7 +61,7 @@
                 <tr th:each="music,musicStat:${musics}">
                     <td><input type="checkbox" th:value="${music.id}" name="box"></td>
                     <td>
-                        <a th:href="@{http://localhost:8080/ABC/music/AdminFindMusicById(id=${music.id})}">
+                        <a th:href="@{https://www.searchingwu.space/music/AdminFindMusicById(id=${music.id})}">
                             <span style="color: black" th:text="${music.music_name}"></span>
                         </a>
                     </td>
@@ -96,21 +97,21 @@
     <span th:text="'当前页: '+${page.pageNum}" style="font-size: small"></span>
     &nbsp&nbsp&nbsp
     <!--            首页作为第一页不可点击-->
-    <a th:href="@{http://localhost:8080/ABC/admin/CombinedFindMusic(pageNo=1,beat=${session.beat2},
+    <a th:href="@{https://www.searchingwu.space/admin/CombinedFindMusic(pageNo=1,beat=${session.beat2},
     tone=${session.tone2},music_name=${session.music_name2})}" class="btn" style="width: 40px">首页</a>
     &nbsp&nbsp
     <span th:if="${page.pageNum==1}">
                 <a onclick="return false" class="btn_FenYe">上一页</a>
             </span>
     <span th:unless="${page.pageNum==1}">
-                <a th:href="@{http://localhost:8080/ABC/admin/CombinedFindMusic(pageNo=${page.pageNum - 1},beat=${session.beat2},
+                <a th:href="@{https://www.searchingwu.space/admin/CombinedFindMusic(pageNo=${page.pageNum - 1},beat=${session.beat2},
     tone=${session.tone2},music_name=${session.music_name2})}" class="btn_FenYe">上一页</a>
             </span>
     &nbsp&nbsp
 
     <span th:each="i:${#numbers.sequence(1,page.pages)}">
         &nbsp
-                <a th:href="@{http://localhost:8080/ABC/admin/CombinedFindMusic(pageNo=${i},beat=${session.beat2},
+                <a th:href="@{https://www.searchingwu.space/admin/CombinedFindMusic(pageNo=${i},beat=${session.beat2},
     tone=${session.tone2},music_name=${session.music_name2})}" th:text="${i}">1</a>
             </span>
 
@@ -120,12 +121,12 @@
             </span>
 
     <span th:unless="${page.pages==page.pageNum}">
-                <a th:href="@{http://localhost:8080/ABC/admin/CombinedFindMusic(pageNo=${page.pageNum+1},beat=${session.beat2},
+                <a th:href="@{hhttps://www.searchingwu.space/admin/CombinedFindMusic(pageNo=${page.pageNum+1},beat=${session.beat2},
     tone=${session.tone2},music_name=${session.music_name2})}" class="btn_FenYe">下一页</a>
             </span>
 
     &nbsp&nbsp
-    <a th:href="@{http://localhost:8080/ABC/admin/CombinedFindMusic(pageNo=${page.pages},beat=${session.beat2},
+    <a th:href="@{https://www.searchingwu.space/admin/CombinedFindMusic(pageNo=${page.pages},beat=${session.beat2},
     tone=${session.tone2},music_name=${session.music_name2})}" class="btn" style="width: 40px">末页</a>
     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
     <span th:text="'总条数'+${page.total}" style="font-size: small"></span>
@@ -169,7 +170,7 @@
             }
             //上面会拼接出一个名为ids的数组ids=1&ids=2&ids=3&ids=4……
             //deleteByIds为controller的Mapping请求名
-            $.get("http://localhost:8080/ABC/admin/deleteByIds", ids, function (data) {
+            $.get("https://www.searchingwu.space/admin/deleteByIds", ids, function (data) {
                 if (data == "ok") {
                     alert("删除成功!");
                     //删除成功后，调用action方法刷新页面信息

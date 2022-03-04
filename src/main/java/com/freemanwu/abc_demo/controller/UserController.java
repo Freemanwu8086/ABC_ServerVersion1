@@ -45,7 +45,7 @@ public class UserController {
         String sessionCode = (String) session.getAttribute("code");
         if (sessionCode.equalsIgnoreCase(sessionCode)){
             userService.register(user);
-            return "Welcome";
+            return "index";
         }else
         return "Error";
     }
@@ -238,7 +238,7 @@ public class UserController {
     @RequestMapping("forgetPassword")
     public String forgetPassword1(User user){
         userService.forgetPassword(user);
-        return "Welcome";
+        return "index";
     }
 
     @RequestMapping("numbers")
@@ -276,7 +276,7 @@ public class UserController {
     public String deleteAccount(String username){
         userService.deleteAccount(username);
         userService.UnNamedMusic(username);
-        return "Welcome";
+        return "index";
     }
 
 

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>用户首页</title>
     <link rel="stylesheet" th:href="@{/css/Type1.css}">
+    <link rel="icon" href="https://www.searchingwu.space/img/favicon.ico"/>
 </head>
 <body style="background-color: #FFF5EE">
 
@@ -14,18 +15,18 @@
         <div class="ue4">
             <ul>
                 <li class="ue6">
-                    <a th:href="@{http://localhost:8080/ABC/user/findByName(username=${session.loginUser.username})}">
+                    <a th:href="@{https://www.searchingwu.space/user/findByName(username=${session.loginUser.username})}">
                         <b>
                             当前用户：<span th:text="${session.loginUser.username}"></span>
                         </b>
                     </a>
                 </li>
                 <li class="add">
-                    <a th:href="@{http://localhost:8080/ABC/user/findByName(username=${session.loginUser.username})}">
+                    <a th:href="@{https://www.searchingwu.space/user/findByName(username=${session.loginUser.username})}">
                         主页&nbsp&nbsp丨</a>
                 </li>
                 <li class="add">
-                    <a href="http://localhost:8080/ABC/Welcome.html">退出登陆</a>
+                    <a href="https://www.searchingwu.space/index.html">退出登陆</a>
                 </li>
             </ul>
         </div>
@@ -36,12 +37,12 @@
     <div class="n">
         <div>
             <div class="leftbtn">
-                <button class="see" onclick="window.location.href='http://localhost:8080/ABC/music/listMusicUser'"><b>全部曲谱</b></button>
+                <button class="see" onclick="window.location.href='https://www.searchingwu.space/music/listMusicUser'"><b>全部曲谱</b></button>
             </div>
         </div>
         <div class="line">
             <div class="rightbtns">
-                <button class="love" onclick="window.location.href='http://localhost:8080/ABC/user/ABCEditor'"><b>新建曲谱</b></button>
+                <button class="love" onclick="window.location.href='https://www.searchingwu.space/user/ABCEditor'"><b>新建曲谱</b></button>
             </div>
         </div>
     </div>

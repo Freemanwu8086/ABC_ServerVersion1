@@ -16,7 +16,7 @@
     </select>
 
     <update id="updateMusicAdmin" parameterType="Sheet_music">
-        update Sheet_music set music_name = #{music_name}, beat = #{beat}, tone = #{tone}, last_update_date = now(),
+        update Sheet_Music set music_name = #{music_name}, beat = #{beat}, tone = #{tone}, last_update_date = now(),
                             state = #{state}, abc = #{abc} where id = #{id};
     </update>
 <!--    用户-->
@@ -29,8 +29,8 @@
     </select>
 
     <update id="updateMusicUser" parameterType="Sheet_music">
-        update Sheet_music set music_name = #{music_name}, beat = #{beat}, tone = #{tone}, last_update_date = now(),
-                            abc = #{abc} where id = #{id}
+        update Sheet_Music set music_name = #{music_name}, beat = #{beat}, tone = #{tone}, last_update_date = now(),
+                            abc = #{abc}, state = '待审核' where id = #{id}
     </update>
 
     <select id="findByMusicUserName" parameterType="java.lang.String" resultType="com.freemanwu.abc_demo.entity.Sheet_Music">
@@ -38,7 +38,7 @@
     </select>
 <!--//////////////////////////////////-->
     <select id="findMusicById" parameterType="java.lang.Integer" resultType="Sheet_music">
-        select * from Sheet_music where id = #{id};
+        select * from Sheet_Music where id = #{id};
     </select>
 
 
