@@ -33,11 +33,11 @@ public class AdminController {
      * @return
      */
     @RequestMapping("adminLogin")
-    public String AdminLogin(Admin admin, HttpSession session, Announce announce, Model model){
+    public String AdminLogin(Admin admin, HttpSession session, Announce announce){
         Admin loginAdmin = adminService.AdminLogin(admin);
         if (loginAdmin != null){
             Announce anna= announceService.showAnnounce(announce);
-            model.addAttribute("announce",anna);
+            session.setAttribute("announce",anna);
             session.setAttribute("loginAdmin",loginAdmin);
             return "AdminFirst";
         }else
@@ -208,8 +208,10 @@ public class AdminController {
     }
 
     @RequestMapping("WholeSiteAnnounce")
-    public String WholeSiteAnnounce(Announce announce){
+    public String WholeSiteAnnounce(Announce announce,HttpSession session){
         adminService.WholeSiteAnnounce(announce);
+        Announce anna= announceService.showAnnounce(announce);
+        session.setAttribute("announce",anna);
         return "AdminFirst";
     }
 
