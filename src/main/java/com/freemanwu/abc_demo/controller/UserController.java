@@ -235,12 +235,22 @@ public class UserController {
         return "UserFindMusicCombined";
     }
 
+    /**
+     * 忘记密码
+     * @param user
+     * @return
+     */
     @RequestMapping("forgetPassword")
     public String forgetPassword1(User user){
         userService.forgetPassword(user);
         return "index";
     }
 
+    /**
+     * 用户曲谱按定调分类饼状图
+     * @param model
+     * @return
+     */
     @RequestMapping("numbers")
     @ResponseBody
     public Integer[] numbers(Model model){
@@ -257,6 +267,10 @@ public class UserController {
         return numberList;
     }
 
+    /**
+     * 用户曲谱按节拍分类饼状图
+     * @return
+     */
     @RequestMapping("beatsNumbers")
     @ResponseBody
     public String[] beatNumbers(){
@@ -268,6 +282,10 @@ public class UserController {
         return beatList;
     }
 
+    /**
+     * 用户注销账号
+     * @return
+     */
     @RequestMapping("deleteAccount1")
     public String deleteJump(){
         return "UserDeleteAccount";

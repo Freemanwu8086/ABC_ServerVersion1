@@ -215,6 +215,11 @@ public class AdminController {
         return "AdminFirst";
     }
 
+    /**
+     * 管理员曲谱按定调分类饼状图
+     * @param model
+     * @return
+     */
     @RequestMapping("numbers")
     @ResponseBody
     public Integer[] numbers(Model model){
@@ -231,6 +236,10 @@ public class AdminController {
         return numberList;
     }
 
+    /**
+     * 管理员曲谱按节拍分类饼状图
+     * @return
+     */
     @RequestMapping("beatsNumbers")
     @ResponseBody
     public String[] beatNumbers(){
