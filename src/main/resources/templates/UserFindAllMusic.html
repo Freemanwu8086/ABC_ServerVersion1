@@ -240,7 +240,7 @@
         pieBeat.setOption(pieBeatOption);
 
         // 异步加载数据
-        $.post('https://www.searchingwu.space/admin/beatsNumbers').done(function(beatList) {
+        $.post('https://www.searchingwu.space/user/beatsNumbers').done(function(beatList) {
             // 填入数据
             pieBeat.setOption({
                 series: [
@@ -333,7 +333,7 @@
         pieTone.setOption(pieToneOption);
 
         // 异步加载数据
-        $.post('https://www.searchingwu.space/admin/numbers').done(function(numberList) {
+        $.post('https://www.searchingwu.space/user/numbers').done(function(numberList) {
             // 填入数据
             pieTone.setOption({
                 series: [
