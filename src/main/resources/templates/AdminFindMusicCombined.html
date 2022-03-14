@@ -34,7 +34,7 @@
     <input class="deleteBtn" type="submit" value="删除选中的所有信息" style="border-radius:20px" onclick="del()" id="deleteAll">
 </div>
 <div id="CombinedQuery" class="QueryWindow">
-    <form action="https://www.searchingwu.space/admin/CombinedFindMusic" method="post">
+    <form action="https://www.searchingwu.space/admin/CombinedFindMusic" method="post" th:target="_blank">
         <input type="submit" class="btn" value="组合" style="width: 80px;float: right;">
         <input type="text" name="music_name" placeholder="请输入乐谱名称，可模糊" class="input" style="float: right;">
         <input type="text" name="beat" placeholder="请输入节拍，如'4/4'" class="input" style="float: right;">
@@ -61,7 +61,7 @@
                 <tr th:each="music,musicStat:${musics}">
                     <td><input type="checkbox" th:value="${music.id}" name="box"></td>
                     <td>
-                        <a th:href="@{https://www.searchingwu.space/music/AdminFindMusicById(id=${music.id})}">
+                        <a th:href="@{https://www.searchingwu.space/music/AdminFindMusicById(id=${music.id})}" th:target="_blank">
                             <span style="color: black" th:text="${music.music_name}"></span>
                         </a>
                     </td>

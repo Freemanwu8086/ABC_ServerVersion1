@@ -87,7 +87,7 @@
                 <tr th:each="music,musicStat:${musics}">
                     <td><input type="checkbox" th:value="${music.id}" name="box"></td>
                     <td>
-                        <a th:href="@{https://www.searchingwu.space/music/UserFindMusicById(id=${music.id})}">
+                        <a th:href="@{https://www.searchingwu.space/music/UserFindMusicById(id=${music.id})}" th:target="_blank">
                             <span style="color: black" th:text="${music.music_name}"></span>
                         </a>
                     </td>

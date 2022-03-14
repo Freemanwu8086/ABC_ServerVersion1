@@ -64,26 +64,26 @@
 
 <div id="easyQuery" class="QueryWindow">
     <div style="width: 25%;float: right">
-        <form action="https://www.searchingwu.space/music/UserFindByMusicName" method="post">
+        <form action="https://www.searchingwu.space/music/UserFindByMusicName" method="post" th:target="_blank">
             <input type="text" name="music_name" placeholder="按曲谱名模糊查询" class="input">&nbsp
             <input type="submit" class="btn" value="查询" style="width: 40px">
         </form>
     </div>
     <div style="width: 25%;float: right">
-        <form action="https://www.searchingwu.space/user/findMusicByBeat" method="post">
+        <form action="https://www.searchingwu.space/user/findMusicByBeat" method="post" th:target="_blank">
             <input type="text" name="beat" placeholder="按节拍查询" class="input">&nbsp
             <input type="submit" class="btn" value="查询" style="width: 40px">
         </form>
     </div>
     <div style="width: 25%;float: right">
-        <form action="https://www.searchingwu.space/user/findMusicByTone" method="post">
+        <form action="https://www.searchingwu.space/user/findMusicByTone" method="post" th:target="_blank">
             <input type="text" name="tone" placeholder="按定调查询" class="input">&nbsp
             <input type="submit" class="btn" value="查询" style="width: 40px">
         </form>
     </div>
 </div>
 <div id="CombinedQuery" class="QueryWindow">
-    <form action="https://www.searchingwu.space/user/CombinedFindMusic" method="post">
+    <form action="https://www.searchingwu.space/user/CombinedFindMusic" method="post" th:target="_blank">
         <input type="submit" class="btn" value="组合" style="width: 80px;float: right;">
         <input type="text" name="music_name" placeholder="请输入乐谱名称，可模糊" class="input" style="float: right;">
         <input type="text" name="beat" placeholder="请输入节拍，如'4/4'" class="input" style="float: right;">
@@ -106,7 +106,7 @@
                 <tbody>
                 <tr th:each="music,musicStat:${musics}">
                     <td>
-                        <a th:href="@{https://www.searchingwu.space/music/UserFindMusicById(id=${music.id})}">
+                        <a th:href="@{https://www.searchingwu.space/music/UserFindMusicById(id=${music.id})}" th:target="_blank">
                             <span style="color: black" th:text="${music.music_name}"></span>
                         </a>
                     </td>
