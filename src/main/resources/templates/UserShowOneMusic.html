@@ -124,9 +124,11 @@
         <div id="canvas" class="visible-background"></div>
     </div>
 
-    <div class="print">
-        <button onclick="window.print()" class="btn" >保存乐谱</button>
-    </div>
+<div class="print">
+    <button onclick="window.print()" class="btn">保存五线谱</button>
+    <button id="midi" class="btn">下载MIDI文件</button>
+    <a id="midi-download" th:download="${music.music_name}+'.mid'" style="display: none"></a>
+</div>
 
 
 </body>

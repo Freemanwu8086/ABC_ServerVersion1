@@ -16,8 +16,10 @@
     <link th:href="@{/css/abcjs-audio.css}" media="all" rel="stylesheet" type="text/css" />
 
     <script type="text/javascript">
+        var abcjsEditor;
+
         window.onload = function () {
-            new ABCJS.Editor("abc", {
+            abcjsEditor = new ABCJS.Editor("abc", {
                 canvas_id: "canvas",
                 generate_warnings: true,
                 warnings_id: "warnings",
@@ -28,9 +30,37 @@
                 abcjsParams: {
                     responsive: "resize",
                     oneSvgPerLine: true
-                }
+                },
+                selectionChangeCallback: selectionChangeCallback
             });
+            document.getElementById("midi").addEventListener("click", downloadMidi);
         };
+        function clickListener(abcElem, tuneNumber, classes, analysis, drag, mouseEvent) {
+            var lastClicked = abcElem.midiPitches;
+            if (!lastClicked)
+                return;
+
+            ABCJS.synth.playEvent(lastClicked, abcElem.midiGraceNotePitches, abcjsEditor.millisecondsPerMeasure()).then(function (response) {
+                console.log("note played");
+            }).catch(function (error) {
+                console.log("error playing note", error);
+            });
+        }
+
+        function selectionChangeCallback(start, end) {
+            if (abcjsEditor) {
+                var el = abcjsEditor.tunes[0].getElementFromChar(start);
+                console.log(el);
+            }
+        }
+
+        function downloadMidi() {
+            var abc = document.getElementById("abc").value;
+            var a = document.getElementById("midi-download");
+            var midi = ABCJS.synth.getMidiFile(abc, { midiOutputType: "encoded" })
+            a.setAttribute("href", midi)
+            a.click();
+        }
     </script>
     <style>
         @media print {
@@ -120,9 +150,11 @@
         <div id="canvas" class="visible-background"></div>
     </div>
 
-    <div class="print">
-        <button onclick="window.print()" class="btn" >保存乐谱</button>
-    </div>
+<div class="print">
+    <button onclick="window.print()" class="btn">保存五线谱</button>
+    <button id="midi" class="btn">下载MIDI文件</button>
+    <a id="midi-download" th:download="${music.music_name}+'.mid'" style="display: none"></a>
+</div>
 
 
 </body>
