@@ -148,4 +148,9 @@ public class UserServiceImpl implements UserService {
     public void UnNamedMusic(String username) {
         userDAO.UnNamedMusic(username);
     }
+
+    @Override
+    public Integer checkUserName(String username) {
+        return userDAO.checkUserName(username);
+    }
 }

@@ -41,13 +41,25 @@ public class UserController {
      * @return
      */
     @RequestMapping("register")
-    public String register(User user, HttpSession session){
+    public String register(User user, HttpSession session, String code){
         String sessionCode = (String) session.getAttribute("code");
-        if (sessionCode.equalsIgnoreCase(sessionCode)){
+        if (sessionCode.equalsIgnoreCase(code)){
             userService.register(user);
             return "index";
         }else
         return "Error";
+    }
+
+    /**
+     * 查验用户名是否可用
+     * @param username
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("checkUserName")
+    public Integer checkUserName(String username){
+        Integer number = userService.checkUserName(username);
+        return number;
     }
 
     /**
@@ -238,12 +250,18 @@ public class UserController {
     /**
      * 忘记密码
      * @param user
+     * @param session
+     * @param code
      * @return
      */
     @RequestMapping("forgetPassword")
-    public String forgetPassword1(User user){
-        userService.forgetPassword(user);
-        return "index";
+    public String forgetPassword1(User user, HttpSession session, String code){
+        String sessionCode = (String) session.getAttribute("code");
+        if (sessionCode.equalsIgnoreCase(code)){
+            userService.forgetPassword(user);
+            return "index";
+        }else
+            return "Error";
     }
 
     /**

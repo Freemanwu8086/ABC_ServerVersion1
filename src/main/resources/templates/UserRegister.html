@@ -116,8 +116,42 @@
         margin-left: 200px;
         font-size: 20px;
     }
-
 </style>
+<script>
+    function checkUserName() {
+        //1、创建一个异步请求对象
+        var xmlHttp = new XMLHttpRequest();
+        //2、为异步请求对象身上绑定【工作状态监听器】
+        xmlHttp.onreadystatechange = function () {
+            if (xmlHttp.readyState == 4 && xmlHttp.status == 200){
+                var data = xmlHttp.responseText;
+                callBack(data);
+            }
+        };
+        //3、初始化异步请求对象
+        var param = document.getElementById("username").value;
+        xmlHttp.open("post","https://www.searchingwu.space/user/checkUserName?username=" + param,true);
+        //4、通知异步请求对象代替浏览器发送请求协议包
+        xmlHttp.send();
+    }
+    //局部刷新函数
+    function callBack(param) {
+        if(param == 0){
+            document.getElementById("myFont").innerText='✅用户名可以使用';
+            document.getElementById("submit").disabled=false;
+        } else {
+            document.getElementById("myFont").innerText='❌亲，用户名已被占用哦～';
+            document.getElementById("submit").disabled=true;
+        }
+    }
+    function checkPwd() {
+        if(password1.value != password2.value) {
+            alert("两次输入密码不一致！")
+            password1.value = "";
+            password2.value = "";
+        }
+    }
+</script>
 <body style="background-color: #FFF5EE">
 <div class="forg1">
     <h1>注册账号&nbsp丨</h1>
@@ -129,7 +163,8 @@
                         <b>用户名</b>
                     </div>
                     <div>
-                        <input type="text" name="username" placeholder="请输入您的用户名" class="input">
+                        <input id="username" type="text" name="username" placeholder="请输入您的用户名" class="input" onblur="checkUserName()">
+                        <span id="myFont"></span>
                     </div>
                 </div>
                 <div class="forg3">
@@ -137,7 +172,15 @@
                         <b>密&nbsp&nbsp&nbsp码</b>
                     </div>
                     <div>
-                        <input type="password" name="password" placeholder="请输入您的密码" class="input">
+                        <input id="password1" type="password" placeholder="请输入您的密码" class="input">
+                    </div>
+                </div>
+                <div class="forg3">
+                    <div class="forg_n">
+                        <b>确认密码</b>
+                    </div>
+                    <div>
+                        <input id="password2" type="password" name="password" placeholder="请再次输入您的密码" class="input" onblur="checkPwd()">
                     </div>
                 </div>
                 <div class="forg3">
@@ -172,7 +215,7 @@
 
                 <div class="find">
                     <div class="btn0">
-                        <input type="submit" value="确定" class="btn">
+                        <input id="submit" type="submit" value="确定" class="btn">
                     </div>
                 </div>
             </div>

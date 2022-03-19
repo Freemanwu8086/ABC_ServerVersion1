@@ -48,7 +48,7 @@
     </select>
 
     <update id="forgetPassword" parameterType="User">
-        update User set password = #{password} where username = #{username}
+        update User set password = #{password} where username = #{username} and phoneNumber = #{phoneNumber}
     </update>
 
     <!--  饼状图数据-->
@@ -93,4 +93,8 @@
     <update id="UnNamedMusic" parameterType="java.lang.String">
         update Sheet_Music set username = '用户已注销' where username = #{username}
     </update>
+
+    <select id="checkUserName" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select count(*) from User where username = #{username}
+    </select>
 </mapper>

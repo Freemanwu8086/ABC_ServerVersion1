@@ -70,4 +70,7 @@ public interface UserService {
     //注销账号
     void deleteAccount(String username);
     void UnNamedMusic(String username);
+
+    //查重用户名
+    Integer checkUserName(String username);
 }
