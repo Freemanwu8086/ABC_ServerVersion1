@@ -47,7 +47,7 @@ public class UserController {
             userService.register(user);
             return "index";
         }else
-        return "Error";
+        return "error";
     }
 
     /**
@@ -99,7 +99,7 @@ public class UserController {
 //           model.addAttribute("User",loginUser);
            return "UserFirst";
        }else
-           return "Error";
+           return "error";
     }
 
     /**
@@ -261,7 +261,7 @@ public class UserController {
             userService.forgetPassword(user);
             return "index";
         }else
-            return "Error";
+            return "error";
     }
 
     /**

@@ -41,7 +41,7 @@ public class AdminController {
             session.setAttribute("loginAdmin",loginAdmin);
             return "AdminFirst";
         }else
-            return "Error";
+            return "error";
     }
 
     /**
