@@ -223,14 +223,35 @@ public class AdminController {
     @RequestMapping("numbers")
     @ResponseBody
     public Integer[] numbers(Model model){
-        Integer[] numberList = new Integer[7];
+        Integer[] numberList = new Integer[21];
         numberList[0] = adminService.totalNumberOfA();
-        numberList[1] = adminService.totalNumberOfB();
-        numberList[2] = adminService.totalNumberOfC();
-        numberList[3] = adminService.totalNumberOfD();
-        numberList[4] = adminService.totalNumberOfE();
-        numberList[5] = adminService.totalNumberOfF();
-        numberList[6] = adminService.totalNumberOfG();
+        numberList[1] = adminService.totalNumberOfUpA();
+        numberList[2] = adminService.totalNumberOfbA();
+
+        numberList[3] = adminService.totalNumberOfB();
+        numberList[4] = adminService.totalNumberOfUpB();
+        numberList[5] = adminService.totalNumberOfbB();
+
+        numberList[6] = adminService.totalNumberOfC();
+        numberList[7] = adminService.totalNumberOfUpC();
+        numberList[8] = adminService.totalNumberOfbC();
+
+        numberList[9] = adminService.totalNumberOfD();
+        numberList[10] = adminService.totalNumberOfUpD();
+        numberList[11] = adminService.totalNumberOfbD();
+
+        numberList[12] = adminService.totalNumberOfE();
+        numberList[13] = adminService.totalNumberOfUpE();
+        numberList[14] = adminService.totalNumberOfbE();
+
+        numberList[15] = adminService.totalNumberOfF();
+        numberList[16] = adminService.totalNumberOfUpF();
+        numberList[17] = adminService.totalNumberOfbF();
+
+        numberList[18] = adminService.totalNumberOfG();
+        numberList[19] = adminService.totalNumberOfUpG();
+        numberList[20] = adminService.totalNumberOfbG();
+
 
         model.addAttribute("numberList",numberList);
         return numberList;
@@ -243,11 +264,13 @@ public class AdminController {
     @RequestMapping("beatsNumbers")
     @ResponseBody
     public String[] beatNumbers(){
-        String[] beatList = new String[4];
+        String[] beatList = new String[6];
         beatList[0] = adminService.totalBeatOf44();
         beatList[1] = adminService.totalBeatOf34();
         beatList[2] = adminService.totalBeatOf24();
         beatList[3] = adminService.totalBeatOf14();
+        beatList[4] = adminService.totalBeatOf38();
+        beatList[5] = adminService.totalBeatOf68();
         return beatList;
     }
 }
