@@ -15,6 +15,14 @@
     <link th:href="@{/css/abcjs-audio.css}" media="all" rel="stylesheet" type="text/css" />
 
     <script type="text/javascript">
+        // window.onload = function (){
+        //     var intro = document.getElementById("introduction")
+        //     if(intro.innerText==null){
+        //         intro.style.display = "none";
+        //     }else
+        //         intro.style.display = "block";
+        // }
+
         var abcjsEditor;
 
         window.onload = function () {
@@ -148,6 +156,34 @@
             <div id="warnings"></div>
             <div id="audio" class="audio"></div>
         </div>
+        <span th:if="${music.introduction} eq null" style="display: none">
+            <div class="forg3">
+                <div class="forg_n">
+                    <b>乐谱简介</b>
+                </div>
+                <div>
+                    <textarea name="introduction" cols="80" rows="15"
+                              spellcheck="false"
+                              style="float: left;
+                                    border: 1px solid #FFD3B9;
+                                    border-radius: 5px;" th:text="${music.introduction}" readonly></textarea>
+                </div>
+            </div>
+        </span>
+        <span th:if="${music.introduction} ne null" style="display: block">
+            <div class="forg3">
+                <div class="forg_n">
+                    <b>乐谱简介</b>
+                </div>
+                <div>
+                    <textarea name="introduction" cols="80" rows="15"
+                              spellcheck="false"
+                              style="float: left;
+                                    border: 1px solid #FFD3B9;
+                                    border-radius: 5px;" th:text="${music.introduction}" readonly></textarea>
+                </div>
+            </div>
+        </span>
     </div>
 
     <div>
