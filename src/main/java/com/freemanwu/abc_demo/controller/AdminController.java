@@ -1,11 +1,10 @@
 package com.freemanwu.abc_demo.controller;
 
-import com.freemanwu.abc_demo.entity.Admin;
-import com.freemanwu.abc_demo.entity.Announce;
-import com.freemanwu.abc_demo.entity.Sheet_Music;
-import com.freemanwu.abc_demo.entity.User;
+import com.freemanwu.abc_demo.entity.*;
 import com.freemanwu.abc_demo.service.AdminService;
 import com.freemanwu.abc_demo.service.AnnounceService;
+import com.freemanwu.abc_demo.service.CommentService;
+import com.freemanwu.abc_demo.service.Sheet_MusicService;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +24,10 @@ public class AdminController {
     private AdminService adminService;
     @Autowired
     private AnnounceService announceService;
+    @Autowired
+    private CommentService commentService;
+    @Autowired
+    private Sheet_MusicService musicService;
 
     /**
      * 管理员登陆
@@ -272,5 +275,19 @@ public class AdminController {
         beatList[4] = adminService.totalBeatOf38();
         beatList[5] = adminService.totalBeatOf68();
         return beatList;
+    }
+
+    @RequestMapping("deleteOneComment")
+    public String deleteOneComment(HttpSession session, Integer id,@RequestParam(value = "pageNo",defaultValue = "1") int pageNum,
+                                   Map<String,Object> map,Model model){
+        commentService.deleteOneComment(id);
+        Integer music_id = (Integer) session.getAttribute("music_id");
+        Sheet_Music music = musicService.findMusicById(music_id);
+        PageInfo<Comment> page = commentService.findAllComments(pageNum,music_id);
+        List<Comment> comments = page.getList();
+        model.addAttribute("music",music);
+        model.addAttribute("comments",comments);
+        map.put("page",page);
+        return "AdminShowOneMusic";
     }
 }
