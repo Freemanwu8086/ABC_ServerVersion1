@@ -8,7 +8,6 @@ import com.freemanwu.abc_demo.service.AdminService;
 import com.freemanwu.abc_demo.service.AnnounceService;
 import com.freemanwu.abc_demo.service.UserService;
 import com.freemanwu.abc_demo.utils.ValidateImageCodeUtils;
-import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -48,7 +47,7 @@ public class UserController {
         String sessionCode = (String) session.getAttribute("code");
         if (sessionCode.equalsIgnoreCase(code)){
             userService.register(user);
-            return "index";
+            return "redirect:/index.html";
         }else
         return "error";
     }
@@ -62,6 +61,7 @@ public class UserController {
     @RequestMapping("checkUserName")
     public Integer checkUserName(String username){
         Integer number = userService.checkUserName(username);
+        System.out.println(number);
         return number;
     }
 
@@ -262,7 +262,7 @@ public class UserController {
         String sessionCode = (String) session.getAttribute("code");
         if (sessionCode.equalsIgnoreCase(code)){
             userService.forgetPassword(user);
-            return "index";
+            return "redirect:/index.html";
         }else
             return "error";
     }
@@ -378,11 +378,19 @@ public class UserController {
         return "redirect:/user/showFavorite";
     }
 
-
     @RequestMapping("touristFirst")
     public String touristFirst(Announce announce, HttpSession session){
         Announce anna = announceService.showAnnounce(announce);
         session.setAttribute("announce",anna);
         return "TouristFirst";
+    }
+
+    @RequestMapping("ABCLearn")
+    public String ABCLearn(){
+        return "ABCLearn";
+    }
+    @RequestMapping("ABCHistory")
+    public String ABCHistory(){
+        return "ABCHistory";
     }
 }

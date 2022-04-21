@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>用户信息修改</title>
-    <link rel="icon" href="https://www.searchingwu.space/img/favicon.ico"/>
+    <link rel="icon" th:href="@{/img/favicon.ico}"/>
     <link rel="stylesheet" th:href="@{/css/Type1.css}">
 </head>
 <body style="background-color: #FFF5EE">
@@ -14,16 +14,16 @@
         <div class="ue4">
             <ul>
                 <li class="ue6">
-                    <a th:href="@{https://www.searchingwu.space/user/findByName(username=${session.loginUser.username})}">
+                    <a th:href="@{/user/findByName(username=${session.loginUser.username})}">
                         <b>当前用户：<span th:text="${session.loginUser.username}"></span></b>
                     </a>
                 </li>
                 <li class="add">
-                    <a th:href="@{https://www.searchingwu.space/user/findByName(username=${session.loginUser.username})}">
+                    <a th:href="@{/user/findByName(username=${session.loginUser.username})}">
                         主页&nbsp&nbsp丨</a>
                 </li>
                 <li class="add">
-                    <a href="https://www.searchingwu.space/index.html">退出登陆</a>
+                    <a th:href="@{/index.html}">退出登陆</a>
                 </li>
             </ul>
         </div>
@@ -31,7 +31,7 @@
 </div>
 
 <div class="return">
-     <a th:href="@{https://www.searchingwu.space/user/First_Redirect}">
+     <a th:href="@{/user/First_Redirect}">
         <&nbsp&nbsp返回主页</a>
 </div>
 
@@ -40,26 +40,26 @@
         <div class="ul0">
             <ul>
                 <li>
-                    <a th:href="@{https://www.searchingwu.space/user/findByName(username=${session.loginUser.username})}">—我的信息—</a>
+                    <a th:href="@{/user/findByName(username=${session.loginUser.username})}">—我的信息—</a>
                 </li>
                 <li>
-                    <a th:href="@{https://www.searchingwu.space/music/listPersonalMusic}">—我的曲谱—</a>
+                    <a th:href="@{/music/listPersonalMusic}">—我的曲谱—</a>
                 </li>
                 <li>
-                    <a th:href="@{https://www.searchingwu.space/user/showFavorite}">—我的收藏—</a>
+                    <a th:href="@{/user/showFavorite}">—我的收藏—</a>
                 </li>
                 <li>
-                    <a th:href="@{https://www.searchingwu.space/user/update1(username=${session.loginUser.username})}" style="color: #FF8C69">—更改信息—</a>
+                    <a th:href="@{/user/update1(username=${session.loginUser.username})}" style="color: #FF8C69">—更改信息—</a>
                 </li>
             </ul>
         </div>
         <div class="out0" style="margin-left: 33px">
             <ul>
                 <li>
-                    <a href="https://www.searchingwu.space/user/deleteAccount1"><h5>注销账号&nbsp丨</h5></a>
+                    <a th:href="@{/user/deleteAccount1}"><h5>注销账号&nbsp丨</h5></a>
                 </li>
                 <li>
-                    <a href="https://www.searchingwu.space/index.html"><h5>退出登陆</h5></a>
+                    <a th:href="@{/index.html}"><h5>退出登陆</h5></a>
                 </li>
             </ul>
         </div>
@@ -69,8 +69,7 @@
             <h1>更改信息&nbsp丨</h1>
         </div>
 
-        <form th:action="@{update2}" method="post">
-
+        <form th:action="@{/user/update2}" method="post">
             <div class="forg2">
                 <div class="forg3">
                     <div class="forg_n">

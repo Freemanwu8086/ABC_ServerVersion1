@@ -7,7 +7,7 @@
 
     <title>ABC游客</title>
 
-    <link rel="icon" href="https://www.searchingwu.space/img/favicon.ico"/>
+    <link rel="icon" th:href="@{/img/favicon.ico}"/>
     <link rel="stylesheet" th:href="@{/css/examples-styles.css}"/>
     <link rel="stylesheet" th:href="@{/css/Type1.css}">
 
@@ -96,11 +96,11 @@
         <div class="ue4">
             <ul>
                 <li class="add">
-                    <a th:href="@{https://www.searchingwu.space/UserRegister.html}">
+                    <a th:href="@{/UserRegister.html}">
                         注册账号&nbsp&nbsp丨</a>
                 </li>
                 <li class="add">
-                    <a href="https://www.searchingwu.space/index.html">回到登陆页</a>
+                    <a th:href="@{/index.html}">回到登陆页</a>
                 </li>
             </ul>
         </div>
@@ -212,19 +212,19 @@
         <span th:text="'当前页: '+${page.pageNum}" style="font-size: small"></span>
         &nbsp&nbsp&nbsp
         <!--            首页作为第一页不可点击-->
-        <a th:href="@{https://www.searchingwu.space/music/TouristFindMusicById(pageNo=1,id=${music.id})}" class="btn" style="width: 40px">首页</a>
+        <a th:href="@{/music/TouristFindMusicById(pageNo=1,id=${music.id})}" class="btn" style="width: 40px">首页</a>
         &nbsp&nbsp
         <span th:if="${page.pageNum==1}">
                 <a onclick="return false" class="btn_FenYe">上一页</a>
             </span>
         <span th:unless="${page.pageNum==1}">
-                <a th:href="@{https://www.searchingwu.space/music/TouristFindMusicById(pageNo=${page.pageNum - 1},id=${music.id})}" class="btn_FenYe">上一页</a>
+                <a th:href="@{/music/TouristFindMusicById(pageNo=${page.pageNum - 1},id=${music.id})}" class="btn_FenYe">上一页</a>
             </span>
         &nbsp&nbsp
 
         <span th:each="i:${#numbers.sequence(1,page.pages)}">
         &nbsp
-                <a th:href="@{https://www.searchingwu.space/music/TouristFindMusicById(pageNo=${i},id=${music.id})}" th:text="${i}">1</a>
+                <a th:href="@{/music/TouristFindMusicById(pageNo=${i},id=${music.id})}" th:text="${i}">1</a>
             </span>
 
         &nbsp&nbsp
@@ -233,11 +233,11 @@
             </span>
 
         <span th:unless="${page.pages==page.pageNum}">
-                <a th:href="@{https://www.searchingwu.space/music/TouristFindMusicById(pageNo=${page.pageNum+1},id=${music.id})}" class="btn_FenYe">下一页</a>
+                <a th:href="@{/music/TouristFindMusicById(pageNo=${page.pageNum+1},id=${music.id})}" class="btn_FenYe">下一页</a>
             </span>
 
         &nbsp&nbsp
-        <a th:href="@{https://www.searchingwu.space/music/TouristFindMusicById(pageNo=${page.pages},id=${music.id})}" class="btn" style="width: 40px">末页</a>
+        <a th:href="@{/music/TouristFindMusicById(pageNo=${page.pages},id=${music.id})}" class="btn" style="width: 40px">末页</a>
         &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
         <span th:text="'总条数'+${page.total}" style="font-size: small"></span>
     </div>
