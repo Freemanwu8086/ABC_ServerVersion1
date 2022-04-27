@@ -6,6 +6,7 @@ import com.freemanwu.abc_demo.entity.Sheet_Music;
 import com.freemanwu.abc_demo.entity.User;
 import com.freemanwu.abc_demo.service.AdminService;
 import com.freemanwu.abc_demo.service.AnnounceService;
+import com.freemanwu.abc_demo.service.Sheet_MusicService;
 import com.freemanwu.abc_demo.service.UserService;
 import com.freemanwu.abc_demo.utils.ValidateImageCodeUtils;
 import com.github.pagehelper.PageInfo;
@@ -36,6 +37,8 @@ public class UserController {
     private AnnounceService announceService;
     @Autowired
     private AdminService adminService;
+    @Autowired
+    private Sheet_MusicService musicService;
 
     /**
      * 用户注册
@@ -90,7 +93,8 @@ public class UserController {
      * @return
      */
     @RequestMapping("findByNameAndPassword")
-    public String findByNameAndPassword(User user, Announce announce, HttpSession session, Model model){
+    public String findByNameAndPassword(User user, Announce announce, HttpSession session,@RequestParam(value = "pageNo",defaultValue = "1") int pageNum,
+                                        Map<String,Object> map, Model model){
        User loginUser = userService.findByNameAndPassword(user);
        String username = loginUser.getUsername();
        if (loginUser != null){
@@ -100,7 +104,12 @@ public class UserController {
 //           model.addAttribute("announce",anna);
            session.setAttribute("announce",anna);
 //           model.addAttribute("User",loginUser);
-           return "UserFirst";
+           PageInfo<Sheet_Music> page = musicService.findAllMusicUser(pageNum);
+           List<Sheet_Music> musics = page.getList();
+
+           model.addAttribute("musics",musics);
+           map.put("page",page);
+           return "UserFindAllMusic";
        }else
            return "error";
     }
